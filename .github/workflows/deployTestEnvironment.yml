@@ -29,6 +29,7 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTIONID }}
         resourceGroupName: ${{ secrets.AZURE_TEST_ENV }}
         template: ./test-env-template.json
+        additionalArguments: "--what-if --rollback-on-error --what-if-exclude-change-types Create Ignore"
 
       # output containerName variable from template
     - run: echo ${{ steps.deploy.outputs.containerName }}
