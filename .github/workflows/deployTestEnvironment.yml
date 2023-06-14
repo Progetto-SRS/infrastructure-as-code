@@ -27,7 +27,7 @@ jobs:
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         resourceGroupName: ${{ secrets.AZURE_TEST_ENV }}
-        template: ./testenv.json
+        template: ./test-env-template.json
 
       # output containerName variable from template
     - run: echo ${{ steps.deploy.outputs.containerName }}
