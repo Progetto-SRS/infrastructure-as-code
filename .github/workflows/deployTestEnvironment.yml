@@ -23,13 +23,11 @@ jobs:
         inlineScript: az login -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PWD }}
 
       # Deploy ARM template
-    - name: Run ARM deploy
-      uses: azure/arm-deploy@v1
+    - name: Deploy ARM template
+      uses: azure/CLI@v1
       with:
-        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTIONID }}
-        resourceGroupName: ${{ secrets.AZURE_TEST_ENV }}
-        template: ./test-env-template.json
-        additionalArguments: "--what-if --rollback-on-error --what-if-exclude-change-types Create Ignore"
+        azcliversion: 2.30.0
+        inlineScript: az deployment group create --resource-group ${{ secrets.AZURE_TEST_ENV }} --template-file ./template-test-env.json
 
       # output containerName variable from template
     - run: echo ${{ steps.deploy.outputs.containerName }}
