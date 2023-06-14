@@ -17,7 +17,7 @@ jobs:
 
       # Log into Azure
     - name: Login into Azure
-      uses: azure/CLI@v1.0
+      uses: azure/CLI@v1
       with:
         azcliversion: 2.30.0
         inlineScript: az login -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PWD }}
