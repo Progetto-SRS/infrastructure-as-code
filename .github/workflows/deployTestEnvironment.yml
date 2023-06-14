@@ -24,10 +24,11 @@ jobs:
 
       # Deploy ARM template
     - name: Deploy ARM template
-      uses: azure/CLI@v1
+      uses: azure/arm-deploy@v1
       with:
-        azcliversion: 2.30.0
-        inlineScript: az deployment group create --resource-group ${{ secrets.AZURE_TEST_ENV }} --template-file https://github.com/francesco-paglia/IaC/blob/5095b046791e05d702066b6c25f65d7b3f606291/test-env-template.json
+        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTIONID }}
+        resourceGroupName: ${{ secrets.AZURE_TEST_ENV }}
+        template: ./testenv.json
 
       # output containerName variable from template
     - run: echo ${{ steps.deploy.outputs.containerName }}
