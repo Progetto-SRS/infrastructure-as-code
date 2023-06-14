@@ -1,0 +1,33 @@
+name: Deploy production environment
+ 
+on: 
+  push:
+    branches:
+    - main
+  workflow_dispatch:
+    
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+      # Checkout code
+    - name: Checkout code
+      uses: actions/checkout@main
+
+      # Log into Azure
+    - name: Log into Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # Deploy ARM template
+    - name: Deploy ARM template
+      uses: azure/arm-deploy@v1
+      with:
+        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        resourceGroupName: ${{ secrets.AZURE_PROD_ENV }}
+        template: ./prod-env-template.json
+
+      # output containerName variable from template
+    - run: echo ${{ steps.deploy.outputs.containerName }}
