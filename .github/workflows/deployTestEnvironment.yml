@@ -16,22 +16,16 @@ jobs:
       uses: actions/checkout@main
 
       # Log into Azure
-    - name: Login into Azure
-      uses: azure/CLI@v1
+    - name: Log into Azure
+      uses: azure/login@v1
       with:
-        azcliversion: 2.30.0
-        inlineScript: az login -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PWD }}
-
-      # Set up Azure CLI
-    - name: Install Azure CLI
-      run: |
-        curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       # Deploy ARM template
     - name: Deploy ARM template
       uses: azure/arm-deploy@v1
       with:
-        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTIONID }}
+        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         resourceGroupName: ${{ secrets.AZURE_TEST_ENV }}
         template: ./testenv.json
 
