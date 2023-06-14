@@ -22,6 +22,10 @@ jobs:
         azcliversion: 2.30.0
         inlineScript: az login -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PWD }}
 
+      # Set up Azure CLI
+    - name: Set up Azure CLI
+      uses: azure/setup-azure-cli@v1
+
       # Deploy ARM template
     - name: Deploy ARM template
       uses: azure/arm-deploy@v1
