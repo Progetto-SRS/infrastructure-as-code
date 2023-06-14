@@ -12,10 +12,12 @@ jobs:
     steps:
 
       # Checkout code
-    - uses: actions/checkout@main
+    - name: Checkout code
+      uses: actions/checkout@main
 
       # Log into Azure
-    - uses: azure/CLI@v1
+    - name: Login into Azure
+      uses: azure/CLI@v1
       with:
         azcliversion: 2.30.0
         inlineScript: |
@@ -26,7 +28,7 @@ jobs:
       uses: azure/arm-deploy@v1
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTIONID }}
-        resourceGroupName: test-env
+        resourceGroupName: ${{ secrets.AZURE_TEST_ENV }}
         template: ./test-env-template.json
 
       # output containerName variable from template
