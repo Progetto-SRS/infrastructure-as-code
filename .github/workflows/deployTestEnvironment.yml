@@ -17,11 +17,10 @@ jobs:
 
       # Log into Azure
     - name: Login into Azure
-      uses: azure/CLI@v1
+      uses: azure/CLI@v1.0
       with:
         azcliversion: 2.30.0
-        inlineScript: |
-          az login -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PWD }}
+        inlineScript: az login -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PWD }}
 
       # Deploy ARM template
     - name: Run ARM deploy
