@@ -5,7 +5,7 @@ on:
     branches:
     - main
     paths:
-    - ./templates/test-env.template.json
+    - ./templates/test-env.template-json
   workflow_dispatch:
     
 jobs:
