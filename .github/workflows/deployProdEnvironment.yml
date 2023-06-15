@@ -5,7 +5,7 @@ on:
     branches:
     - main
     paths:
-    - 'templates/prod**.json'
+    - 'templates/prod-env-template.json'
   workflow_dispatch:
     
 jobs:
