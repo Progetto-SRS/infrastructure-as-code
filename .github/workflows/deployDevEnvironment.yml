@@ -4,6 +4,8 @@ on:
   push:
     branches:
     - main
+    paths:
+    - ./Templates/dev-env.template.json
   workflow_dispatch:
     
 jobs:
