@@ -7,7 +7,7 @@
             "type": "String"
         },
         "sites_prod_functions_srs_name": {
-            "defaultValue": "prod-functions-srs",
+            "defaultValue": "prod-functions-srs", 
             "type": "String"
         },
         "serverfarms_ASP_prodenv_9f1d_name": {
