@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sites_prod_app_srs_name": {
-            "defaultValue": "prod-app-srs",
+            "defaultValue": "prod-app-srs", 
             "type": "String"
         },
         "sites_prod_functions_srs_name": {
